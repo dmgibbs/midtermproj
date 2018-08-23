@@ -1,6 +1,7 @@
 "use strict";
 
 require('dotenv').config();
+const model = require('./model.js');
 
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
@@ -42,6 +43,39 @@ app.use("/api/users", usersRoutes(knex));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+app.get("/register", (req, res) => {
+    res.render("register");  
+});
+
+app.post("/register", (req, res) => {
+  console.log("These are the  items", req.body);
+  model.createUser(req.body);
+  res.send(true)
+});
+
+app.get("/login", (req, res) => {
+  res.render("login");  
+});
+
+app.post("/login", (req, res) => {
+  res.redirect("index");  
+});
+
+app.get("/users/:id", (req, res) => {
+  console.log("reached get user edit user routine.")
+});
+
+app.get("/users/profile/:id", (req, res) => {
+  console.log("reached get user profile edit routine.")
+});
+
+app.post("/users/profile/:id", (req, res) => {
+  console.log("reached post user profile edit routine.")
+});
+
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

@@ -14,5 +14,11 @@ module.exports = (knex) => {
     });
   });
 
+  // router.get("/register", (req, res) => {
+  //   res.render("register",{});  
+  // });
+
+
+
   return router;
 }
