@@ -1,7 +1,16 @@
 
-
 create table users {id integer primary key, email TEXT , telephone TEXT};
 create table todolist {todoitemid integer, description TEXT, duration TEXT,
                         Status TEXT, user_id integer, cat_id integer};
-create table category(id integer, name TEXT, imageurl TEXT);
+create table categories (id integer, name TEXT, imageurl TEXT);
+
+//Query to get the list of user todolist
+
+
+
+// SELECTING ALL MOVIES FOR A USERID
+
+// userid = getCurrentuser()
+// Select name from categories where (category.id = todolist.cat_id) 
+// and (userid = todolist.user_id) and (name === 'FILM')
                 

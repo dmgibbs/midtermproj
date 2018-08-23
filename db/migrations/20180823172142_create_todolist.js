@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('todolist', function (table) {
       table.increments('id');
       table.string('description');
-      table.string('duration');
+      table.integer('duration');
       table.string('status');
       table.integer('user_id');
       table.integer('cat_id');
