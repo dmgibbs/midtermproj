@@ -15,12 +15,6 @@ const createUser = (body) => {
     
     }
 
-const editUserProfile = (body) => {
-        knex('users')
-        .alter({name:body.email, password: body.password , bio:body.bio})
-        .then((results) => {
-          return true;
-        });
 
 
 const createUserStub = () => true
