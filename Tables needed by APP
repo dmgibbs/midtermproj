@@ -1,0 +1,7 @@
+
+
+create table users {id integer primary key, email TEXT , telephone TEXT};
+create table todolist {todoitemid integer, description TEXT, duration TEXT,
+                        Status TEXT, user_id integer, cat_id integer};
+create table category(id integer, name TEXT, imageurl TEXT);
+                

@@ -6,14 +6,23 @@ const ENV         = process.env.ENV || "development";
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 
-const createUser = (params) => {
+const createUser = (body) => {
     knex('users')
-    .insert({name:params.username, password: params.passwd})
+    .insert({name:body.email, password: body.password})
     .then((results) => {
       return true;
     });
     
     }
+
+const editUserProfile = (body) => {
+        knex('users')
+        .alter({name:body.email, password: body.password , bio:body.bio})
+        .then((results) => {
+          return true;
+        });
+
+
 const createUserStub = () => true
 
 const createItem = () => {}
