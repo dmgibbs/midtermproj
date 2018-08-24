@@ -3,6 +3,8 @@
 const express = require('express');
 const router  = express.Router();
 
+
+
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
@@ -13,12 +15,7 @@ module.exports = (knex) => {
         res.json(results);
     });
   });
-
-  // router.get("/register", (req, res) => {
-  //   res.render("register",{});  
-  // });
-
-
-
   return router;
+
+
 }

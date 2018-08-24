@@ -1,17 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+   <title>ToDOListProject</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/normalize.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+<body>
+   <div class="container">
+       <header>
+           <nav>
+               <ul>
+                   <li>
+                       <a href="/">To do list</a>
+                   </li>
+                   <li>
+                       <a href="/login">Login</a>
+                   </li>
+                   <li>
+                       <a href="/register">register</a>
+                   </li>
+                   <li>
+                       <a href="/profile">Profile</a>
+                   </li>
+               </ul>
+           </nav>
+       </header>
+       <div class="lists-header">
+           <h2>To DO List</h2>
+           <input type="text" id="lists-title" placeholder="title...">
+           <h3>Add a stuff</h3>
+       </div>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+
+
+       <form action="/add-form" method="post">
+           <div>
+               <label for="description">Description:</label>
+               <input type="text" name="description" value="description" id="description-content" required>
+           </div>
+           <div>
+               <label for="duration">Duration:</label>
+               <input type="text" name="duration" value="duration" id="duration-content"  required>
+           </div>
+           <div>
+               <label for="status">Status:</label>
+               <div class="checkbox">
+                   <label for="todo">todo</label>
+                   <input type="radio" name="todo" id="todo" value="todo">
+                   <label for="doing">doing</label>
+                   <input type="radio" name="doing" id="doing" value="doing">
+                   <label for="done">done</label>
+                   <input type="radio" name="done" id="done" value="done">
+               </div>
+           </div>
+           <button type='submit' id="add-button">Add</button>
+       </form>
+
+
+   </div>
+   </div>
+   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="js/index.js"></script>
+</body>
+
 </html>

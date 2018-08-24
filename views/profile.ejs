@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ToDOListProject</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+             <nav>
+                <ul>
+                     <li>
+                       <a href="/">To do list</a>
+                   </li>
+                   <li>
+                       <a href="/login">Login</a>
+                   </li>
+                   <li>
+                       <a href="/register">register</a>
+                   </li>
+                   <li>
+                       <a href="/profile">Profile</a>
+                   </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main-body">
+           <h3>Add form</h3>
+
+            <form id='add-form' action="" method='post'>
+                <label for="">Enter a todo event:</label>
+                <input type="text" placeholder="Name:" required>
+                <label for="">Time you want to start:</label>
+                <input type="email" placeholder="Time:" required>
+                <button type='submit'>Add</button>
+
+            </form>
+            <footer>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

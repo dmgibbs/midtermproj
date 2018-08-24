@@ -12,7 +12,16 @@ const createUser = (body) => {
     .then((results) => {
       return true;
     });
-    
+
+    }
+
+const showHomePage = (body) => {
+    knex('users')
+    .insert({name:body.email, password: body.password})
+    .then((results) => {
+      return true;
+    });
+
     }
 
 

@@ -18,6 +18,8 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
+// const todolistRoutes = require("./routes/todolists");
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -39,28 +41,39 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
-// Home page
+// for todolists
+// app.use("/api/todolists", todolistRoutes(knex));
+
+// Home page - GET
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+// Home page - POST
 app.get("/register", (req, res) => {
-    res.render("register");  
+    res.render("register");
+});
+
+app.get("/login", (req, res) => {
+    res.render("login");
+});
+
+app.get("/profile", (req, res) => {
+    res.render("profile");
 });
 
 app.post("/register", (req, res) => {
   console.log("These are the  items", req.body);
   model.createUser(req.body);
-  res.send(true)
+  res.redirect("/");
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");  
-});
 
 app.post("/login", (req, res) => {
-  res.redirect("index");  
+  model.createUser(req.body);
+  res.redirect("/");
 });
+
 
 app.get("/users/:id", (req, res) => {
   console.log("reached get user edit user routine.")
@@ -73,7 +86,6 @@ app.get("/users/profile/:id", (req, res) => {
 app.post("/users/profile/:id", (req, res) => {
   console.log("reached post user profile edit routine.")
 });
-
 
 
 
