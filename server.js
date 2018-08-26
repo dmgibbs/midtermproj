@@ -267,7 +267,8 @@ app.get("/todo/list", (req, res) => {
     .select('description', 'duration', 'status', 'user_id', 'cat_id')
     .where({'user_id': req.session.id })
     .asCallback(function(err, rows) {
-      res.send(rows);
+       res.send(rows);
+      // res.send(200).json(rows);
 
     });
 
