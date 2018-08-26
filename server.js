@@ -37,7 +37,7 @@ const category = {
     "supper", "meal", "eat"
   ],
   "products": [
-    "item", "store", "product", "goods",
+    "buy","item", "store", "product", "goods",
     "general", "something"
   ],
   "Books": ["read", "play", "paper", "look", "see", "magazine", "novel"]
@@ -182,7 +182,7 @@ app.post("/todo/add", (req, res) => {
           case "movie":
             value = 1;
             break;
-          case "books":
+          case "Books":
             value = 2;
             break;
           case "restaurant":
@@ -190,6 +190,7 @@ app.post("/todo/add", (req, res) => {
             break;
           case "products":
             value = 4;
+            break;
         }
         console.log("value of string:", value);
         // knexfunction();
@@ -203,19 +204,23 @@ app.post("/todo/add", (req, res) => {
       })
   }
 
-  console.log(req.body);
+  console.log(req.body, 1);
 
   function giveDescription() {
     return new Promise((resolve, reject) => {
       resolve(req.body.description);
     })
+
   };
 
   giveDescription()
     .then((result) => {
       evaluateScores(result)
+      if (! result) {
+        return Promise.reject("err");
+      }
     }).catch((err) => {
-      console.log(err);
+      console.log("err  - 2");
     })
 
 
@@ -260,11 +265,12 @@ app.get("/todo/list", (req, res) => {
   console.log("get to do list: ", req.session.id);
   knex('todolist')
     .select('description', 'duration', 'status', 'user_id', 'cat_id')
-    .where({ 'user_id': req.session.id })
+    .where({'user_id': req.session.id })
     .asCallback(function(err, rows) {
       res.send(rows);
 
     });
+
 
 });
 

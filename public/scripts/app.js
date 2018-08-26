@@ -24,15 +24,26 @@ $(document).ready(function() {
           console.log("result.duration" + result.duration);
           console.log("result.status" + result.status);
           let $todolist = `
-      <div class = "col">
+
       <ul>
       <li>description: ${$description}duration: ${$duration}status: ${$status} <a href="/users/:id/edit">Edit
           </a></li>
       </ul>
-      </div>
+
     `;
-    console.log("todolist"+$todolist);
-      $(".all-lists-container").append($todolist);
+
+     if (result.cat_id === 1 ){
+      $("#movie").append($todolist);
+    } else if (result.cat_id === 2) {
+      $("#book").append($todolist);
+    } else if (result.cat_id === 3) {
+      $("#restaurant").append($todolist);
+    } else if (result.cat_id === 4) {
+      $("#product").append($todolist);
+    }
+
+    // console.log("todolist"+$todolist);
+    //   $(".all-lists-container").append($todolist);
         }
 
 
@@ -40,29 +51,7 @@ $(document).ready(function() {
     });
 
 
-
-    // console.log($todolist);
-
-
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });

@@ -5,16 +5,15 @@
   <title>ToDOListProject</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/normalize.css">
-   <link rel="stylesheet" href="styles/style.css">
-   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Fira+Sans" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-
 </head>
 
 <body>
-   <% include partials/_header %>
   <div class="container">
     <header>
       <nav>
@@ -34,41 +33,44 @@
         </ul>
       </nav>
     </header>
-    <div class="lists-header">
-
-      <h3>Add a stuff</h3>
-    </div>
-    <form action="/todo/add" method="POST" class="form-content">
-      <div>
-        <label for="description">Description:</label>
-        <input type="text" name="description" value="" id="description-content" required>
+    <% include partials/_header %>
+      <div class="form-body">
+        <h2>Add your to do list:</h2>
+        <form action="/todo/add" method="POST" class="form-content" id="add-form">
+          <label for="description">Description:</label>
+          <input type="text" name="description" value="" id="description-content" class="list-input" required>
+          <label for="duration">Duration:</label>
+          <input type="text" name="duration" value="" id="duration-content" class="list-input" required>
+          <label for="status">Status:</label>
+          <div class="checkbox">
+            <label for="todo">Todo</label>
+            <input type="radio" name="todo" id="todo" value="todo">
+            <label for="doing">Doing</label>
+            <input type="radio" name="todo" id="doing" value="doing">
+            <label for="done">Done</label>
+            <input type="radio" name="todo" id="done" value="done">
+          </div>
+          <div id="category">
+            <select>
+              <option value="0">select a category:</option>
+              <option value="1">Movies</option>
+              <option value="2">Books</option>
+              <option value="3">Restaurant</option>
+              <option value="4">Products</option>
+            </select>
+          </div>
+          <div class="add-cancel-button">
+            <button type='submit' id="add-button">Add</button>
+            <button type='reset' id="cancel-button">Cancel</button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label for="duration">Duration:</label>
-        <input type="text" name="duration" value="" id="duration-content" required>
+      <div class="row all-lists-container">
+        <div class="lists" id="movie">movie</div>
+        <div class="lists" id="book">book</div>
+        <div class="lists" id=restaurant>restaurant</div>
+        <div class="lists" id="product">product</div>
       </div>
-      <div>
-        <label for="status">Status:</label>
-        <div class="checkbox">
-          <label for="todo">todo</label>
-          <input type="radio" name="todo" id="todo" value="todo">
-          <label for="doing">doing</label>
-          <input type="radio" name="todo" id="doing" value="doing">
-          <label for="done">done</label>
-          <input type="radio" name="todo" id="done" value="done">
-        </div>
-      </div>
-      <button type='submit' id="add-button">Add</button>
-    </form>
-    <div class="row all-lists-container">
-      <div class="col">
-
-      movie
-      </div>
-      <div class="col">book</div>
-      <div class="col">resturant</div>
-      <div class="col">product</div>
-    </div>
   </div>
   </div>
 </body>
