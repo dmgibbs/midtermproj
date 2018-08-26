@@ -1,57 +1,52 @@
-$(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
-});
-
-
- function postNewList() {
-    $.ajax({
-      type: "POST",
-      url: "/",
-      data: $("#description-content").serialize()
-    }).done(() => {
-      $("article").remove();
-      loadTweets();
-    });
-  };
-
-
-
 $(document).ready(function() {
-
   $("#add-button").click(function(e) {
     e.preventDefault();
 
-    let duration = $("#duration-content").val();
-    if (duration == "") {
-      console.log("something should be filled in.");
-      $("#duration-content").focus();
-      return false;
-    }
+    $.ajax({
+      type: "POST",
+      url: "/todo/add",
+      data: $(".form-content").serialize()
+    }).done((id) => {
+      $.ajax({
+        type: "GET",
+        url: `/todo/list`,
+      }).then((response) => {
+        console.log("response:::::::::", response);
+        for (var i = 0; i < response.length; i++) {
+          let result = response[i];
+          console.log("response[i]", result);
 
-    let description = $("#description-content").val()
-     if (description == "") {
-      console.log("something should be filled in.");
-      $("#description-content").focus();
-      return false;
-    }
 
-    var dataString = 'description=' +description + 'duration='
+          let $description = result.description;
+          let $duration = result.duration;
+          let $status = result.status;
+          console.log("result.description" + result.description);
+          console.log("result.duration" + result.duration);
+          console.log("result.status" + result.status);
+          let $todolist = `
+      <div class = "col">
+      <ul>
+      <li>description: ${$description}duration: ${$duration}status: ${$status} <a href="/users/:id/edit">Edit
+          </a></li>
+      </ul>
+      </div>
+    `;
+    console.log("todolist"+$todolist);
+      $(".all-lists-container").append($todolist);
+        }
 
-    if(descrip.length === 0 || dura.length === 0){
-       console.log("you should input something here.");
-    }
 
-    postNewList();
+      });
+    });
+
+
+
+    // console.log($todolist);
 
 
   });
+
+
 
 
 

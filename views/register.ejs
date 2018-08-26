@@ -4,13 +4,12 @@
    <meta charset="UTF-8">
    <title>Home Page</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="css/normalize.css">
-   <link rel="stylesheet" href="css/register.css">
-   <link rel="stylesheet" href="css/body.css">
-
-   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+   <link rel="stylesheet" href="styles/normalize.css">
+   <link rel="stylesheet" href="styles/style.css">
+   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <!--  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" /> -->
+  <!--  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+   <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
 
    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
    <script type="text/javascript" src="/scripts/app.js"></script>
@@ -37,8 +36,9 @@
            </nav>
        </header>
        <div class="form-body">
-           <h3>Registration Form</h3>
+           <h2>Registration Form</h2>
            <form id='register-form' action="/register" method='POST'>
+            <input type="nickname" name="nickname" placeholder="Your nickname" required>
                <input type="email" name="email" placeholder="Email" required>
                <input type="password" name="password" placeholder="Password" required>
                <button type='submit' value="register">Register</button>

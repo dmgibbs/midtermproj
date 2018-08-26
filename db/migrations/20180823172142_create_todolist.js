@@ -7,10 +7,9 @@ exports.up = function(knex, Promise) {
       table.string('status');
       table.integer('user_id');
       table.integer('cat_id');
-      
       table.foreign('user_id').references('id').inTable('users');
       table.foreign('cat_id').references('id').inTable('categories');
-    });    
+    });
    };
 
 exports.down = function(knex, Promise) {
