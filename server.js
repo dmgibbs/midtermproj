@@ -56,7 +56,7 @@ const stripInput = function() {
     var word = taggedWord[0];
     var tag = taggedWord[1];
     if (tag.includes("VB") || tag.includes("NN")) {
-      if (pushedItems < 8) {
+      if (pushedItems < 10) {
         verbs.push(word);
         pushedItems++;
       }
@@ -71,30 +71,6 @@ const res = stripInput();
 
 
 
-
-// evaluateScores()
-//   .then((result) => {
-//     data = JSON.parse(result);
-//     answer = data['taxonomy'].sort();
-//     var value = 0;
-//     switch (answer[0].tag) {
-//       case "movie":
-//         value = 1;
-//         break;
-//       case "books":
-//         value = 2;
-//         break;
-//       case "restaurant":
-//         value = 3;
-//         break;
-//       case "products":
-//         value = 4;
-//     }
-//     console.log(" Your category selected is: ", answer[0].tag);
-//     console.log("which as a category id of :", value)
-//   }).catch((error) => {
-//     console.log(error);
-//   })
 
 
 
@@ -164,7 +140,9 @@ app.get("/profile", (req, res) => {
 app.post("/register", (req, res) => {
   console.log("These are the  items", req.body);
   model.createUser(req.body);
-  res.redirect("/");
+
+
+  res.redirect("/login");
 });
 
 
@@ -195,16 +173,16 @@ app.post("/todo/add", (req, res) => {
         console.log("value of string:", value);
         // knexfunction();
         knex('todolist')
-          .insert({ description: req.body.description, duration: req.body.duration, status: req.body.todo, user_id: req.session.id, cat_id: value })
+          .insert({description: req.body.description, duration: req.body.duration, status: req.body.todo, user_id: req.session.id, cat_id: value })
           .then((results) => {
-            console.log("req.body", req.body);
+            //console.log("req.body", req.body);
             res.redirect("/");
 
           });
       })
   }
 
-  console.log(req.body, 1);
+  //console.log(req.body, 1);
 
   function giveDescription() {
     return new Promise((resolve, reject) => {
@@ -224,27 +202,12 @@ app.post("/todo/add", (req, res) => {
     })
 
 
-  // evaluateScores()
-  //   .then((result) => {
-  //     data = JSON.parse(result);
-  //     console.log("got to evaluate");
-
-
-  //   console.log(" Your category selected is: ", answer[0].tag);
-  //   console.log("which as a category id of :", value)
-
-  //  //---------------------------------------------------------------------
-
-  // }).catch((error) => {
-  //   console.log(error);
-  // });
-
 });
 
 
 //POST - /login
 app.post("/login", (req, res) => {
-  console.log("req.body is: ", req.body);
+  //console.log("req.body is: ", req.body);
   knex
     .select('id', 'email', 'password')
     .from('users')
@@ -264,15 +227,17 @@ app.post("/login", (req, res) => {
 app.get("/todo/list", (req, res) => {
   console.log("get to do list: ", req.session.id);
   knex('todolist')
-    .select('description', 'duration', 'status', 'user_id', 'cat_id')
+    .select('*')
     .where({'user_id': req.session.id })
     .asCallback(function(err, rows) {
+      //console.log(`rows,`,rows);
        res.send(rows);
       // res.send(200).json(rows);
 
     });
 
 
+//res.render('todoedit',templateVars);
 });
 
 
@@ -294,6 +259,36 @@ app.get("/users/:id/edit", (req, res) => {
 
 });
 
+
+app.post("/todo/edit/:id", (req, res) => {
+   console.log("reached post user profile edit routine.");
+   console.log(`at post("/todo/edit/:id" req.body: `,req.body);
+   let todo_id=req.body.todo_id;
+   let todo = req.body.todo;
+
+   console.log(`post("/todo/edit/:id"), todo is,`,todo);
+   console.log(`post("/todo/edit/:id"), todo_id is,`,todo_id);
+  //knex('todolist').where({})
+//res.redirect("/");
+ });
+
+
+// Edit form
+app.get("/todo/edit/:id", (req, res) => {
+  console.log("edit get to do list: ", req.session.id);
+  knex('todolist')
+    .select('id','description', 'duration', 'status', 'user_id', 'cat_id')
+    .where({'id': req.params.id })
+    .asCallback(function(err, rows) {
+     let templateVars = {
+        data:rows[0],
+        id: rows[0].user_id,
+        userid:req.params.id
+     }
+      res.render("todoedit", templateVars);
+
+    });
+});
 
 // Logout
 app.post("/logout", (req, res) => {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ToDOListProject</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/lists.css">
+  <link rel="stylesheet" href="styles/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Fira+Sans" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">To do list</a>
+          </li>
+          <li>
+            <a href="/login">Login</a>
+          </li>
+          <li>
+            <a href="/register">register</a>
+          </li>
+          <li>
+            <a href="/profile">Profile</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <% include partials/_header %>
+      <div class="form-body">
+        <h2>Edit your to do list:</h2>
+        <form action="/todo/edit/<%=data.id%>" method="POST" class="form-content" id="edit-form">
+          <input type="type" name="id" >
+          <label for="description" class="label">Description:</label>
+          <input type="text" name="description" value="<%= data.description %>" id="description-content" class="list-input" required>
+          <label for="duration" class="label">Duration:</label>
+          <input type="number" name="duration" value="<%= data.duration %>" id="duration-content" class="list-input" required>
+          <label for="status" class="label">Status:</label>
+          <input type="text" name="todo" value="<%= data.todo %>" id="todo-content" class="list-input" required>
+          <div class="edit-cancel-button">
+            <button type='submit' id="edit-button" data-todo_id="<%= userid %>">Save</button>
+            <button type='reset' id="cancel-button">Cancel</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  </div>
+</body>
+
+</html>

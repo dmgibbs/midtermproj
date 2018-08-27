@@ -7,14 +7,19 @@ $(document).ready(function() {
         console.log("response:::::::::", response);
         for (var i = 0; i < response.length; i++) {
           let result = response[i];
-          console.log("response[i]", result);
+          //console.log("response[i]", result);
 
           let $description = result.description;
           let $duration = result.duration;
           let $status = result.status;
-          console.log("result.description" + result.description);
-          console.log("result.duration" + result.duration);
-          console.log("result.status" + result.status);
+
+          let $todoId = result.id;
+
+          //console.log("result.Id",result.id);
+
+          //console.log("result.description" + result.description);
+          //console.log("result.duration" + result.duration);
+          //console.log("result.status" + result.status);
           let $todolist = `
 
           <label class="todo">
@@ -31,7 +36,7 @@ $(document).ready(function() {
       <li class="list-li">Description: ${$description}</li>
       <li class="list-li">Duration: ${$duration} minutes</li>
       <li class="list-li">Status: ${$status}</li>
-      <li class="list-li"><a href="/users/:id/edit">Edit</a></li>
+      <li class="list-li"><a href="/todo/edit/${$todoId}">Edit</a></li>
        </div>
 
   </label>
@@ -62,17 +67,17 @@ $(document).ready(function() {
         type: "GET",
         url: `/todo/list`,
       }).then((response) => {
-        console.log("response:::::::::", response);
+        //console.log("response:::::::::", response);
         for (var i = 0; i < response.length; i++) {
           let result = response[i];
           console.log("response[i]", result);
-
+          let $todoId=result.id;
           let $description = result.description;
           let $duration = result.duration;
           let $status = result.status;
-          console.log("result.description" + result.description);
-          console.log("result.duration" + result.duration);
-          console.log("result.status" + result.status);
+          //console.log("result.description" + result.description);
+          //console.log("result.duration" + result.duration);
+          //console.log("result.status" + result.status);
           let $todolist = `
 
           <label class="todo">
@@ -89,13 +94,12 @@ $(document).ready(function() {
       <li class="list-li">Description: ${$description}</li>
       <li class="list-li">Duration: ${$duration} minutes</li>
       <li class="list-li">Status: ${$status}</li>
-      <li class="list-li"><a href="/users/:id/edit">Edit
+      <li class="list-li"><a href="/todo/edit/${$todoId}">Edit
            </a></li>
        </div>
 
   </label>
     `;
-
      if (result.cat_id === 1 ){
       $("#movie").append($todolist);
     } else if (result.cat_id === 2) {
@@ -116,5 +120,20 @@ $(document).ready(function() {
 
   });
 
+$("#edit-button").on("click",function(){
+  let todo_id = $(this).data("todo_id");
+  console.log(`todo_id,`,todo_id);
+  $.ajax({
+        type: "POST",
+        url: `/todo/edit/${todo_id}`,
+        data: {'todo_id':`${todo_id}`},
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(response) {
+            console.log(response);
+        }
+});
 
+});
 });
