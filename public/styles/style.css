@@ -1,0 +1,278 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0px;
+  color: #2d2d2d;
+  font-weight: 300;
+  line-height: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1,
+h2 {
+  margin-bottom: 10%;
+  font-size: 30px;
+  margin-top: 0;
+  color: #406979;
+
+}
+
+.container {
+  background-image: url("../images/background-img2.jpg");
+  background-size: cover;
+/*  max-width: 1024px;*/
+  padding: 0px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.list-li a{
+  color: #135156;
+}
+nav {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 28px;
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  background-color: #a7bfc9;
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  top: 0;
+  height: 80px;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+ul {
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding: 13px 0;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  flex-basis: 100%;
+  flex-wrap: wrap;
+}
+
+li {
+  margin-top: 2%;
+  font-weight: 500;
+  flex-basis: 20%;
+  list-style: none;
+  text-align: center;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
+li a:hover {
+  color: #406979;
+  font-style: italic;
+}
+
+.main-body {
+  padding-top: 100px;
+}
+
+
+form {
+  margin:0 auto;
+  width: 80%;
+  font-size: 22px;
+}
+
+input {
+  width: 100%;
+  border: none;
+  margin: 2% 0px 9%;
+  padding:10px;
+  border-bottom:1px solid #444e57;
+}
+
+
+input:focus {
+  color: grey;
+}
+
+button {
+  padding:12px
+}
+
+.label {
+  float: left;
+  cursor:pointer
+}
+
+.form-body {
+  opacity: 0.7;
+  width: 38%;
+  background: white;
+  padding: 5% 0px;
+  margin: 10% auto;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #dedcdc;
+}
+
+.form-body:hover {
+  opacity: 1;
+}
+
+button {
+  border: none;
+  width: 100%;
+  margin: 2%;
+  background: #a7bfc9;
+  color: white;
+}
+
+.col {
+  border: 1px solid grey;
+}
+
+.all-lists .row {
+  margin: 0px;
+}
+
+.all-lists {
+  margin-top: 5%;
+  text-align: center;
+}
+
+#movie-list-ol {
+border: 1px solid grey;
+width: 30%;
+background: #a9c19c30;
+margin: 0px auto;
+
+}
+#movie-list-ol li {
+  font-size: 20px;
+  margin: 5px;
+}
+
+.button {
+  border-radius: 5px;
+  margin-top: 4%;
+  cursor: pointer;
+}
+
+.button:hover {
+/*  color: #406979;*/
+  background: #406979;
+  font-style: italic;
+}
+
+.all-lists-container {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.6;
+  margin-bottom: 10%;
+}
+
+.all-lists-container:hover {
+  opacity: 1;
+}
+
+.checkbox {
+  margin-top: 15%;
+  display: flex;
+}
+
+.edit-cancel-button {
+  display: flex;
+}
+
+.lists {
+  border-radius: 5px;
+  flex-basis: 40%;
+  padding-top: 4%;
+}
+
+#logout {
+  width:20%;
+}
+
+
+#welcome {
+  font-size: 80px;
+  margin-top: 5%;
+  text-align: center;
+
+  margin-bottom: 5%
+
+}
+
+.article{
+
+  width:33%;
+  text-align:center;
+  line-height:300px;
+  font-size:8rem;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+   font-weight: bold;
+  background-repeat: no-repeat;
+}
+
+.art2{
+  background-image:url("../images/cloud.jpeg");
+  -webkit-animation: hiMove 100s infinite;
+   transition:background 3s ease-in;
+
+}
+
+
+
+@-webkit-keyframes move {
+   0% {background-position: top;}
+  50% {background-position: bottom;}
+  100% {background-position: top;}
+}
+
+@keyframes move {
+   0% {background-position: top;}
+  50% {background-position: bottom;}
+  100% {background-position: top;}
+}
+
+@-webkit-keyframes hiMove {
+   0% {background-position: left;}
+  50% {background-position: right;}
+  100% {background-position: left;}
+}
+
+@keyframes hiMove {
+   0% {background-position: left;}
+  50% {background-position: right;}
+  100% {background-position: left;}
+}
+
+@-webkit-keyframes elloMove {
+   0% {background-position: top-left;}
+  50% {background-position: center;}
+  100% {background-position: bottom-right;}
+}
+
+@keyframes elloMove {
+   0% {background-position: top-left;}
+  50% {background-position: center;}
+  100% {background-position: bottom-right;}
+}
+
+@media(max-width:786px){
+  .article{
+    width:100%;
+  }
+}

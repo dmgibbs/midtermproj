@@ -1,0 +1,28 @@
+form {
+  margin:0 auto;
+  width:300px
+}
+input {
+  margin-bottom:3px;
+  padding:10px;
+  width: 100%;
+  border:1px solid #CCC
+}
+button {
+  padding:10px
+}
+label {
+  cursor:pointer
+}
+
+h3 {
+  text-align: center;
+}
+
+button {
+  border: none;
+  width: 100%;
+  background: #f1756cf5;
+  color: white;
+}
+
