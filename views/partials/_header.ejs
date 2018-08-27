@@ -7,6 +7,7 @@
 
 <body>
  <% if (id) { %>
+ <div class="logout">
  <div class="wrapper">
   <div class="article art2">
     <p id="welcome">Welcome </p>
@@ -14,14 +15,14 @@
 
  </div>
 
-        <form action="/logout" method="POST">
-            <button class="button" id="logout">Logout</button><!-- <input type="submit" value="logout"> -->
-        </form>
-   <% } else { %>
+  <form action="/logout" method="POST">
+  <button class="button" id="logout">Logout</button><!-- <input type="submit" value="logout"> -->
+  </form>
+  <% } else { %>
 
 
-            <% } %>
-
+  <% } %>
+  </div>
 </body>
 
 </html>
