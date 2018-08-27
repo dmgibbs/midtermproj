@@ -28,7 +28,7 @@ pd.apiKey = "WsJx3P7cFx5CLT2eLaVrfrh6RhaNFSEYKoKgKrDZcSA";
 
 const category = {
   "movie": [
-    "film", "entertainment",
+    "watch", "film", "entertainment",
     "play", "concert",
     "cinema"
   ],

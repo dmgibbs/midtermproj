@@ -14,7 +14,7 @@ body {
 
 h1,
 h2 {
-  margin-bottom: 10%;
+  margin-bottom: 13%;
   font-size: 30px;
   margin-top: 0;
   color: #406979;
@@ -22,7 +22,7 @@ h2 {
 }
 
 .container {
-  background-image: url("../images/background-img2.jpg");
+  background-image: url("/images/background-img2.jpg"), linear-gradient(rgba(255, 255, 255, 0.2), rgba(255,255,255,0.5));
   background-size: cover;
 /*  max-width: 1024px;*/
   padding: 0px;

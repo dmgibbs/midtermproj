@@ -67,6 +67,7 @@ $(document).ready(function() {
         type: "GET",
         url: `/todo/list`,
       }).then((response) => {
+        $(".todo").remove();
         //console.log("response:::::::::", response);
         for (var i = 0; i < response.length; i++) {
           let result = response[i];
@@ -80,7 +81,7 @@ $(document).ready(function() {
           //console.log("result.status" + result.status);
           let $todolist = `
 
-          <label class="todo">
+    <label class="todo">
     <input class="todo__state" type="checkbox" />
 
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
